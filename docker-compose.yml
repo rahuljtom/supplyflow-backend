@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres
+    restart: always
+    container_name: supplyflow-db
+    environment:
+      POSTGRES_USER: rahuljtom
+      POSTGRES_PASSWORD: Godislove-79
+      POSTGRES_DB: supplyflow
+    ports:
+      - "5433:5432"

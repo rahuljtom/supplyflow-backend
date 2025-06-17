@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/supplyflow
+    username: rahuljtom
+    password: Godislove-79
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  application:
+    name: supplyflow-backend
