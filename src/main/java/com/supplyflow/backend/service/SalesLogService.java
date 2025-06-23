@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class SalesLogService {
@@ -40,5 +41,17 @@ public class SalesLogService {
                 .build();
 
         return salesLogRepo.save(sale);
+    }
+
+    public List<SalesLog> getFilteredSales(Long productId, LocalDateTime startDate, LocalDateTime endDate) {
+        if (productId != null && startDate != null && endDate != null) {
+            return salesLogRepo.findByProductIdAndSaleTimeBetween(productId, startDate, endDate);
+        } else if (productId != null && startDate == null && endDate == null) {
+            return salesLogRepo.findByProductId(productId);
+        } else if (productId == null && startDate != null && endDate != null) {
+            return salesLogRepo.findBySaleTimeBetween(startDate, endDate);
+        } else {
+            return salesLogRepo.findAll();
+        }
     }
 }
